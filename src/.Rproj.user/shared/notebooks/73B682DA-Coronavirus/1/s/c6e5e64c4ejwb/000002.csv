@@ -1,0 +1,25 @@
+"0","# install.packages(""devtools"")"
+"0","devtools::install_github(""RamiKrispin/coronavirus"")"
+"2","WARNING: Rtools is required to build R packages, but is not currently installed.
+
+Please download and install Rtools custom from https://cran.r-project.org/bin/windows/Rtools/.
+"
+"2","Skipping install of 'coronavirus' from a github remote, the SHA1 (87c04f17) has not changed since last install.
+  Use `force = TRUE` to force installation
+"
+"0","library(coronavirus)"
+"0","update_dataset()"
+"2","No updates are available
+"
+"0","data(""coronavirus"")"
+"0","summary(""coronavirus"")"
+"1","   Length "
+"1","    Class "
+"1","     Mode "
+"1","
+"
+"1","        1 "
+"1","character "
+"1","character "
+"1","
+"

@@ -1,0 +1,19 @@
+---
+title: "Coronavirus Case Study"
+author: "Solomon Heisey"
+date: "6/6/2020"
+output: html_document
+---
+
+This is my first Markdown document.
+
+Let's load some data.
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("RamiKrispin/coronavirus")
+library(coronavirus)
+update_dataset()
+data("coronavirus")
+head(coronavirus)
+```
