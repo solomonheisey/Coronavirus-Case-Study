@@ -1,0 +1,7 @@
+"0","summary_df <- coronavirus %>%"
+"0","  filter(type == ""confirmed"") %>%"
+"0","  group_by(country) %>%"
+"0","  summarise(total_cases = sum(cases)) %>%"
+"0","  arrange(-total_cases)"
+"0",""
+"0","summary_df %>% head(20)"
