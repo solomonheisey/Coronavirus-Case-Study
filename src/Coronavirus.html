@@ -369,27 +369,45 @@ summary {
 </div>
 
 
-<p>This is my first Markdown document.</p>
-<p>Let’s load some data.</p>
-<pre class="r"><code># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;RamiKrispin/coronavirus&quot;)</code></pre>
-<pre><code>## WARNING: Rtools is required to build R packages, but is not currently installed.
-## 
-## Please download and install Rtools custom from https://cran.r-project.org/bin/windows/Rtools/.</code></pre>
-<pre><code>## Skipping install of &#39;coronavirus&#39; from a github remote, the SHA1 (87c04f17) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
-<pre class="r"><code>library(coronavirus)
-update_dataset()</code></pre>
-<pre><code>## No updates are available</code></pre>
-<pre class="r"><code>data(&quot;coronavirus&quot;)
-head(coronavirus)</code></pre>
-<pre><code>##         date province     country lat long      type cases
-## 1 2020-01-22          Afghanistan  33   65 confirmed     0
-## 2 2020-01-23          Afghanistan  33   65 confirmed     0
-## 3 2020-01-24          Afghanistan  33   65 confirmed     0
-## 4 2020-01-25          Afghanistan  33   65 confirmed     0
-## 5 2020-01-26          Afghanistan  33   65 confirmed     0
-## 6 2020-01-27          Afghanistan  33   65 confirmed     0</code></pre>
+<p>The novel Coronavirus has effected everyone in some shape or form. One of the largets problems of this virus is the minute amount of information we currently know about it. This statistical analysis I have prepared aims to shed some light on the current situation and expose trends that are often hidden to naked eye.</p>
+<p>For this project I am using the <a href="https://github.com/ramikrispin/coronavirus" class="uri">https://github.com/ramikrispin/coronavirus</a> dataset. This is one of the most robust tidy format datasets which is pulled directly from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Cornovirus repository. Below is a short summary of the dataset.</p>
+<pre><code>##       date              province           country               lat         
+##  Min.   :2020-01-22   Length:106760      Length:106760      Min.   :-51.796  
+##  1st Qu.:2020-02-24   Class :character   Class :character   1st Qu.:  6.611  
+##  Median :2020-03-29   Mode  :character   Mode  :character   Median : 22.300  
+##  Mean   :2020-03-29                                         Mean   : 20.714  
+##  3rd Qu.:2020-05-02                                         3rd Qu.: 40.143  
+##  Max.   :2020-06-05                                         Max.   : 71.707  
+##       long             type               cases          
+##  Min.   :-135.00   Length:106760      Min.   :-254963.0  
+##  1st Qu.: -14.45   Class :character   1st Qu.:      0.0  
+##  Median :  21.76   Mode  :character   Median :      0.0  
+##  Mean   :  24.35                      Mean   :     92.5  
+##  3rd Qu.:  81.00                      3rd Qu.:      2.0  
+##  Max.   : 178.06                      Max.   :  51717.0</code></pre>
+<pre><code>## # A tibble: 20 x 2
+##    country        total_cases
+##    &lt;chr&gt;                &lt;int&gt;
+##  1 US                 1897380
+##  2 Brazil              614941
+##  3 Russia              449256
+##  4 United Kingdom      284734
+##  5 Spain               240978
+##  6 India               236184
+##  7 Italy               234531
+##  8 France              190180
+##  9 Peru                187400
+## 10 Germany             184924
+## 11 Turkey              168340
+## 12 Iran                167156
+## 13 Chile               122499
+## 14 Mexico              110026
+## 15 Canada               95947
+## 16 Saudi Arabia         95748
+## 17 Pakistan             89249
+## 18 China                84177
+## 19 Qatar                65495
+## 20 Bangladesh           60391</code></pre>
 
 
 
