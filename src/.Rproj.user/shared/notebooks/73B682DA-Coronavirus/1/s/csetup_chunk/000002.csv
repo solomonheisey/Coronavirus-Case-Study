@@ -1,12 +1,46 @@
 "0","# install.packages(""devtools"")"
 "0","devtools::install_github(""RamiKrispin/coronavirus"")"
-"2","Skipping install of 'coronavirus' from a github remote, the SHA1 (87c04f17) has not changed since last install.
+"2","Skipping install of 'coronavirus' from a github remote, the SHA1 (7114ba55) has not changed since last install.
   Use `force = TRUE` to force installation
 "
 "0","library(coronavirus)"
-"0","library(dplyr)"
-"0","library(ggplot2)"
-"0","update_dataset()"
-"2","No updates are available
+"2","
+Attaching package: ‘coronavirus’
+
 "
-"0","data(""coronavirus"")"
+"2","The following object is masked _by_ ‘.GlobalEnv’:
+
+    coronavirus
+
+"
+"0","library(dplyr)"
+"2","Registered S3 method overwritten by 'dplyr':
+  method           from
+  print.rowwise_df     
+"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(ggplot2)"
+"0","library(glue)"
+"2","
+Attaching package: ‘glue’
+
+"
+"2","The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+"
+"0","update_dataset()"

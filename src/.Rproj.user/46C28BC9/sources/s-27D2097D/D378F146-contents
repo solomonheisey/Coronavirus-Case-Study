@@ -7,10 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 # install.packages("devtools")
-devtools::install_github("RamiKrispin/coronavirus")
+devtools::install_github("jonocarroll/ggeasy")
 library(coronavirus)
 library(dplyr)
 library(ggplot2)
+library(glue)
 update_dataset()
 data("coronavirus")
 ```
@@ -33,6 +34,10 @@ This coronavirus dataset has the following fields:
 summary(coronavirus)
 ```
 
+
+Shown below is a simple bar graph depicting the total number of infections on a per-country basis. The countries are sorted in descending order and listed below the graph is the raw data.
+
+
 ```{r, echo= FALSE}
 summary_df <- coronavirus %>%
   filter(type == "confirmed") %>%
@@ -43,7 +48,9 @@ summary_df <- coronavirus %>%
 barchart <- summary_df %>% head(20)
 
 dat <- data.frame(country = barchart$country, values = as.numeric(barchart$total_cases))
-ggplot(data=dat, aes(x=country, y=values, fill=values)) + geom_bar(stat="identity") +theme(axis.text.x = element_text(angle = 90)) + ggtitle("Top 20 COVID-19 Confirmed Cases by Country") 
+ggplot(data=dat, aes(x=reorder(country, -values), y=values, fill=values)) + geom_bar(stat="identity") + ggtitle("COVID-19 Confirmed Cases Top 20 Countries") + labs(y="Confirmed Cases", x = "Country", fill="Confirmed Cases")  + theme(axis.text.x = element_text(angle = 90), plot.title=element_text(hjust=0.5))
+
+barchart
 
 ```
 
