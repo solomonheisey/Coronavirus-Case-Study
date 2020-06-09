@@ -16,11 +16,12 @@ library(tidyr)
 library(plotly)
 update_dataset()
 data("coronavirus")
+options(warn=-1)
 ```
 
 The novel Coronavirus has effected everyone in some shape or form. One of the largest problems of this virus is the minute amount of information we currently know about it. This statistical analysis I have prepared aims to shed some light on the current situation and expose trends that are often hidden to the naked eye.
 
-For this project, I am using the https://github.com/ramikrispin/coronavirus dataset. This is one of the most robust tidy format datasets which is pulled directly from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository. Below is a summary of the dataset.
+For this project, I am usingthe Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository. Below is a summary of the dataset.
 
 This coronavirus dataset has the following fields:
 
@@ -36,11 +37,10 @@ This coronavirus dataset has the following fields:
 summary(coronavirus)
 ```
 
-
 Shown below is a simple bar graph depicting the total number of confirmed cases on a per-country basis. The countries are sorted in descending order and listed below the graph is the raw data.
 
 
-```{r, echo= FALSE}
+```{r, echo= FALSE, message=FALSE}
 summary_df <- coronavirus %>%
   filter(type == "confirmed") %>%
   group_by(country) %>%
@@ -58,7 +58,7 @@ barchart
 
 Show below is a tree map depicting the total number of recovered cases on a per-country basis. The countries are sorted in devcending order and the percentage represents the number of people who have recovered from the virus after previously being diagnosed.
 
-``` {r, echo= FALSE}
+``` {r, echo= FALSE, message=FALSE}
 conf_df <- coronavirus %>% 
   filter(type == "recovered") %>%
   group_by(country) %>%
@@ -75,21 +75,22 @@ conf_df <- coronavirus %>%
           labels= ~ country,
           parents=  ~parents,
           domain = list(column=0),
-          name = "Recovered",
+          title="Recovered",
           textinfo="label+value+percent parent")
 ```
 
+Show below is a line graph depicting the total number of recovered, active, and death cases on a worldwide scale. Since number of cases is the sum of all recovered, active, and dead cases the three attributes can be stacked for better visualization.
 
-``` {r, echo= FALSE}
+``` {r, echo= FALSE, message=FALSE}
 coronavirus %>% 
   group_by(type, date) %>%
   summarise(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases) %>%
   arrange(date) %>%
   mutate(active = confirmed - death - recovered) %>%
-  mutate(active_total = cumsum(active),
-                recovered_total = cumsum(recovered),
-                death_total = cumsum(death)) %>%
+  mutate(active_total = active,
+                recovered_total = recovered,
+                death_total = death) %>%
   plot_ly(x = ~ date,
                   y = ~ active_total,
                   name = 'Active', 
@@ -99,16 +100,12 @@ coronavirus %>%
                   stackgroup = 'one') %>%
   add_trace(y = ~ death_total, 
              name = "Death",
-             fillcolor = '#E41317') %>%
+             fillcolor = '#d62728') %>%
   add_trace(y = ~recovered_total, 
             name = 'Recovered', 
-            fillcolor = 'forestgreen') %>%
-  layout(title = "Distribution of Covid19 Cases Worldwide",
+            fillcolor = '#2ca02c') %>%
+  layout(title = "COVID-19 Cases Worldwide",
          legend = list(x = 0.1, y = 0.9),
          yaxis = list(title = "Number of Cases"),
-         xaxis = list(title = "Source: Johns Hopkins University Center for Systems Science and Engineering"))
-
+         xaxis = list(title = "Date"))
 ```
-
-
-

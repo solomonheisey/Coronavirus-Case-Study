@@ -1,23 +1,10 @@
 "0","# install.packages(""devtools"")"
-"0","devtools::install_github(""RamiKrispin/coronavirus"")"
-"2","Skipping install of 'coronavirus' from a github remote, the SHA1 (7114ba55) has not changed since last install.
+"0","devtools::install_github(""jonocarroll/ggeasy"")"
+"2","Skipping install of 'ggeasy' from a github remote, the SHA1 (bc915292) has not changed since last install.
   Use `force = TRUE` to force installation
 "
 "0","library(coronavirus)"
-"2","
-Attaching package: ‘coronavirus’
-
-"
-"2","The following object is masked _by_ ‘.GlobalEnv’:
-
-    coronavirus
-
-"
 "0","library(dplyr)"
-"2","Registered S3 method overwritten by 'dplyr':
-  method           from
-  print.rowwise_df     
-"
 "2","
 Attaching package: ‘dplyr’
 
@@ -33,6 +20,8 @@ Attaching package: ‘dplyr’
 
 "
 "0","library(ggplot2)"
+"2","Need help? Try Stackoverflow: https://stackoverflow.com/tags/ggplot2
+"
 "0","library(glue)"
 "2","
 Attaching package: ‘glue’
@@ -41,6 +30,35 @@ Attaching package: ‘glue’
 "2","The following object is masked from ‘package:dplyr’:
 
     collapse
+
+"
+"0","library(tidyr)"
+"0","library(plotly)"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"
+"2","
+Attaching package: ‘plotly’
+
+"
+"2","The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    filter
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    layout
 
 "
 "0","update_dataset()"
