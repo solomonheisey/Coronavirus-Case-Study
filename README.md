@@ -2,7 +2,7 @@
  A statistical analysis on the novel Coronavirus using R
  
  <p align="center">
-  <img src="images/image.png" width="30%" height="30%">
+  <img src="images/image.png" width="40%" height="40%">
 </p>
  
  ## Installation
