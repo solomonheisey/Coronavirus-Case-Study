@@ -5,60 +5,18 @@
 "
 "0","library(coronavirus)"
 "0","library(dplyr)"
-"2","
-Attaching package: ‘dplyr’
-
-"
-"2","The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-"
-"2","The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-"
 "0","library(ggplot2)"
-"2","Need help? Try Stackoverflow: https://stackoverflow.com/tags/ggplot2
-"
 "0","library(glue)"
-"2","
-Attaching package: ‘glue’
-
-"
-"2","The following object is masked from ‘package:dplyr’:
-
-    collapse
-
-"
 "0","library(tidyr)"
+"0","library(tidyverse)"
+"0","library(drat)"
+"0","library(covdata)"
 "0","library(plotly)"
-"2","Registered S3 method overwritten by 'data.table':
-  method           from
-  print.data.table     
-"
-"2","Registered S3 method overwritten by 'htmlwidgets':
-  method           from         
-  print.htmlwidget tools:rstudio
-"
-"2","
-Attaching package: ‘plotly’
-
-"
-"2","The following object is masked from ‘package:ggplot2’:
-
-    last_plot
-
-"
-"2","The following object is masked from ‘package:stats’:
-
-    filter
-
-"
-"2","The following object is masked from ‘package:graphics’:
-
-    layout
-
-"
+"0",""
+"0","library(lubridate)"
+"0","library(gghighlight)"
+"0","library(ggrepel)"
+"0",""
+"0",""
+"0",""
 "0","update_dataset()"

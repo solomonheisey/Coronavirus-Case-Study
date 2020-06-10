@@ -1,7 +1,7 @@
 ---
 title: "Coronavirus Case Study"
 author: "Solomon Heisey"
-date: "6/6/2020"
+date: "6/10/2020"
 output: html_document
 ---
 
@@ -13,7 +13,14 @@ library(dplyr)
 library(ggplot2)
 library(glue)
 library(tidyr)
+library(tidyverse)
+library(drat)
+library(covdata)
 library(plotly)
+library(lubridate)
+library(gghighlight)
+library(ggrepel)
+
 update_dataset()
 data("coronavirus")
 options(warn=-1)
@@ -21,7 +28,7 @@ options(warn=-1)
 
 The novel Coronavirus has effected everyone in some shape or form. One of the largest problems of this virus is the minute amount of information we currently know about it. This statistical analysis I have prepared aims to shed some light on the current situation and expose trends that are often hidden to the naked eye.
 
-For this project, I am usingthe Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository. Below is a summary of the dataset.
+For this project, I am using the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository. Below is a summary of the dataset.
 
 This coronavirus dataset has the following fields:
 
@@ -56,7 +63,7 @@ barchart
 
 ```
 
-Show below is a tree map depicting the total number of recovered cases on a per-country basis. The countries are sorted in devcending order and the percentage represents the number of people who have recovered from the virus after previously being diagnosed.
+Show below is a tree map depicting the total number of recovered cases on a per-country basis. The countries are sorted in descending order and the percentage represents the number of people who have recovered from the virus after previously being diagnosed.
 
 ``` {r, echo= FALSE, message=FALSE}
 conf_df <- coronavirus %>% 
@@ -107,5 +114,34 @@ coronavirus %>%
   layout(title = "COVID-19 Cases Worldwide",
          legend = list(x = 0.1, y = 0.9),
          yaxis = list(title = "Number of Cases"),
-         xaxis = list(title = "Date"))
+         xaxis = list(title = "Date")) 
+```
+
+After finishing my research on Highmark's response I was motivated to analyze the effects of different COVID-19 deterrents. Show below is a graph depicting the effects of certain actions taken by various countries.
+
+``` {r,echo= FALSE, message=FALSE}
+
+
+merged <- read_csv("https://joachim-gassen.github.io/data/merged_data_2020-03-27.csv", 
+                col_types = cols()) %>%
+  mutate(date = ymd(date))
+
+read_csv("https://joachim-gassen.github.io/data/npi_acaps_2020-03-27.csv",
+         col_types = cols()) %>%
+  mutate(npi_date = ymd(date_implemented)) %>%
+  rename(npi_type = category) %>%
+  mutate(
+    npi_regional = !is.na(admin_level_name),
+    npi_targeted_pop_group = targeted_pop_group == "Yes",
+    npi_lockdown = str_detect(measure, "General lockdown")
+  ) %>%
+  select(iso3c, npi_date, npi_type, npi_regional, 
+         npi_targeted_pop_group, npi_lockdown) -> npi
+
+ggplot(npi, aes(x = npi_date, fill = npi_type)) + 
+  geom_bar(position = "stack") + theme_minimal() +
+  labs(title = "COVID-19 Interventions Over Time",
+       x = "Date",
+       y = "Number of Interventions",
+       fill = "Intervention Type") + theme(plot.title=element_text(hjust=0.5))
 ```

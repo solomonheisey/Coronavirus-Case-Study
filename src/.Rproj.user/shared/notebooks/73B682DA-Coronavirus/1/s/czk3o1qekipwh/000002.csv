@@ -1,0 +1,31 @@
+"0","conf_df <- coronavirus %>% "
+"0","  filter(type == ""recovered"") %>%"
+"0","  group_by(country) %>%"
+"0","  summarise(total_cases = sum(cases)) %>%"
+"0","  arrange(-total_cases) %>%"
+"0","  mutate(parents = ""Recovered Cases"") %>%"
+"0","  ungroup() "
+"0",""
+"0","  top_20 <- conf_df %>% head(20)"
+"0","  "
+"0","  plot_ly(data = top_20,"
+"0","          type= ""treemap"","
+"0","          values = ~total_cases,"
+"0","          labels= ~ country,"
+"0","          parents=  ~parents,"
+"0","          domain = list(column=0),"
+"0","          title=""Recovered"","
+"0","          textinfo=""label+value+percent parent"")"
+"2","`arrange_()` is deprecated as of dplyr 0.7.0.
+Please use `arrange()` instead.
+See vignette('programming') for more help
+[90mThis warning is displayed once every 8 hours.[39m
+[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m"
+"2","'treemap' objects don't have these attributes: 'title'
+Valid attributes include:
+'type', 'visible', 'opacity', 'name', 'uid', 'ids', 'customdata', 'meta', 'hoverlabel', 'stream', 'transforms', 'uirevision', 'labels', 'parents', 'values', 'branchvalues', 'count', 'level', 'maxdepth', 'tiling', 'marker', 'pathbar', 'text', 'textinfo', 'texttemplate', 'hovertext', 'hoverinfo', 'hovertemplate', 'textfont', 'insidetextfont', 'outsidetextfont', 'textposition', 'domain', 'idssrc', 'customdatasrc', 'metasrc', 'labelssrc', 'parentssrc', 'valuessrc', 'textsrc', 'texttemplatesrc', 'hovertextsrc', 'hoverinfosrc', 'hovertemplatesrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+"
+"2","'treemap' objects don't have these attributes: 'title'
+Valid attributes include:
+'type', 'visible', 'opacity', 'name', 'uid', 'ids', 'customdata', 'meta', 'hoverlabel', 'stream', 'transforms', 'uirevision', 'labels', 'parents', 'values', 'branchvalues', 'count', 'level', 'maxdepth', 'tiling', 'marker', 'pathbar', 'text', 'textinfo', 'texttemplate', 'hovertext', 'hoverinfo', 'hovertemplate', 'textfont', 'insidetextfont', 'outsidetextfont', 'textposition', 'domain', 'idssrc', 'customdatasrc', 'metasrc', 'labelssrc', 'parentssrc', 'valuessrc', 'textsrc', 'texttemplatesrc', 'hovertextsrc', 'hoverinfosrc', 'hovertemplatesrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+"
