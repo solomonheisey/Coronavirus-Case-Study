@@ -1,4 +1,0 @@
-"0",""
-"0","barchart <- summary_df %>% head(20)"
-"0",""
-"0","summary_df[, c(""country"", ""total_cases"")] %>% head(20)"
